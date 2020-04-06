@@ -13,14 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/admin', 'InsectosApiController@index')->name('insectos.index');
-Route::get('/insectos/{id}', 'InsectosApiController@show')->name('insectos.show');
+Route::get('/index', 'InsectosApiController@index')->name('insectos.index');
+Route::resource('/admin/insectos','InsectosApiController');
+
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard', 'AdminController@dashboard')->name('admin.dashboard');
