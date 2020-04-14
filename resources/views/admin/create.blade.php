@@ -1,77 +1,43 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Usuarios</title>
+    @section('estilos')
+    @endsection
+</head>
+<body id="page-top">
+@section('navbar')
+    <div class="container" style="opacity: 1;">
+        <div class="card border rounded shadow-lg o-hidden border-0 my-5" style="background-color: rgba(84,221,82,0.2);opacity: 1;color: #858796;/*background-image: url(&quot;/assets/img/Login/backgroundAC-login.png&quot;);*/">
+            <div class="card-body p-0" style="opacity: 1;background-color: rgba(255,255,255,0.38);">
+                <div class="row" style="opacity: 1;">
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center"><label style="color: #000000;font-size: 35px;font-family: Roboto, sans-serif;filter: blur(0px) brightness(96%) contrast(87%) grayscale(0%) hue-rotate(0deg) invert(0%) saturate(74%) sepia(0%);font-weight: bold;"><strong>REGISTRA UN USUARIO</strong></label></div>
+                            <form class="user" enctype="multipart/form-data" action="{{route('admin.store')}}" method="POST">
+                            @csrf
+                                <div class="form-group row"><label>Nombre</label><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="Nombre del usuario" name="name"></div>
+                                <div class="form-group row"><label>Email</label><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="Correo electronico" name="email"></div>
+                                <div class="form-group row"><label>Contraseña</label><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="password" placeholder="Contraseña" name="password"></div>
+                                <div class="form-group row"><label>Tipo de usuario</label><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="Tipo de usuario" name="tipo_usuario"></div>
+                                <div class="form-row">
+                                    <div class="form-group"><a href="{{route('admin.index')}}" class="btn btn-primary btn-block text-white btn-user" type="submit" style="background-color: rgb(48,99,230);font-style: normal;font-weight: bold;">Regresar al inicio</a></div>
+                                    <div class="col"><button class="btn btn-primary btn-block text-white btn-user" style="background-color: rgb(57,198,71);font-style: normal;font-weight: bold;">Registrar usuario</button></div>
+                                </div>
+                            </form>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
+                    <div class="col-lg-5 d-none d-lg-flex">
+                        <div class="flex-grow-1 bg-register-image" style="background-image: url(&quot;/assets/img/CreateAccount/socrates_create.png&quot;);background-repeat: no-repeat;background-size: contain;"></div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 @endsection
+
+
+@section('scripts')
+@endsection
+</body>
