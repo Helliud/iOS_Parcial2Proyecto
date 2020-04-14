@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Insectos</title>
+    <title>Usuarios</title>
     @section('estilos')
     @endsection
 </head>
@@ -14,7 +14,7 @@
             <div class="container-fluid">
                 <div class="card shadow">
                     <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold">Tabla de insectos</p>
+                        <p class="text-primary m-0 font-weight-bold">Tabla de usuarios</p>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
@@ -23,42 +23,38 @@
                                     <tr>
                                         <th>Nombre</th>
                                         <th>ID</th>
-                                        <th>Temporada</th>
-                                        <th>Donado</th>
-                                        <th>Fecha captura</th>
-                                        <th>Estado</th>
+                                        <th>Correo</th>
+                                        <th>Tipo de usuario</th>
                                         <th>Más datos</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($insectos as $insecto)
+                                @foreach ($usuarios as $usuario)
                                     <tr>
-                                        <td class="nombre"><img class="rounded-circle mr-2" width="30" height="30" src="/storage/assets/img/imgInsectos/{{$insecto->foto}}">{{$insecto->nombre}}</td>
-                                        <td>{{$insecto->id}}</td>
-                                        <td>{{$insecto->temporada}}</td>
-                                        <td>{{$insecto->donado}}</td>
-                                        <td>{{$insecto->fecha_capturado}}</td>
-                                        <td>{{$insecto->estado}}</td>
+                                        <td class="nombre"><img class="rounded-circle mr-2" width="30" height="30" src="/assets/img/avatars/avatar1.jpeg">{{$usuario->name}}</td>
+                                        <td>{{$usuario->id}}</td>
+                                        <td>{{$usuario->email}}</td>
+                                        <td>{{$usuario->tipo_usuario}}</td>
                                         <td>
                                         <form method="POST" 
-                                            action="{{route('insectos.destroy',$insecto->id)}}">
+                                            action="{{route('admin.destroy',$usuario->id)}}">
                                             @csrf
                                             @method('DELETE')
 
                                             <!-- Show -->
                                             <a 
-                                            href="{{route('insectos.show',$insecto->id)}}"
+                                            href="{{route('admin.show',$usuario->id)}}"
                                             class="btn btn-primary">
                                             <i class="fas fa-eye"></i>
                                             </a>
 
                                             <!-- Edit -->
-                                            <a href="{{route('insectos.edit',$insecto->id)}}" class="btn btn-primary">
+                                            <a href="{{route('admin.edit',$usuario->id)}}" class="btn btn-primary">
                                                 <i class="fas fa-edit"></i>
                                             </a>
 
                                             <!-- Delete -->
-                                            <a href="javascript:;" data-toggle="modal" onclick="deleteData({{$insecto->id}})" 
+                                            <a href="javascript:;" data-toggle="modal" onclick="deleteData({{$usuario->id}})" 
                                             data-target="#DeleteModal" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Delete</a>                                        </form>
                                     </td>                                        
                                     </tr>
@@ -68,10 +64,8 @@
                                     <tr>
                                         <td><strong>Nombre</strong></td>
                                         <td><strong>ID</strong></td>
-                                        <td><strong>Temporada</strong></td>
-                                        <td><strong>Donado</strong></td>
-                                        <td><strong>Fecha captura</strong></td>
-                                        <td><strong>Estado</strong></td>
+                                        <td><strong>Correo</strong></td>
+                                        <td><strong>Tipo de usuario</strong></td>
                                         <td><strong>Más datos</strong></td>
                                     </tr>
                                 </tfoot>
@@ -79,27 +73,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!--
-    <section class="no-padding" id="about">
-        <div class="container-fluid">
-                    
-        <div class="row">
-        @foreach($insectos as $insecto)
-        <div class="img_ct">
-            <img class="instagram-home-items" src="/assets/img/avatars/avatar1.jpeg">
-
-            <div class="text-content">
-                {{$insecto->nombre}}
-            </div>
-        </div>        
-
-        @endforeach
-        <img class="rounded-circle mb-3 mt-4" src="/assets/img/avatars/avatar1.jpeg" width="160" height="160" />
-
-        </div>
-        </div>
-    </section>-->
 
     <div id="DeleteModal" class="modal fade text-danger" role="dialog">
    <div class="modal-dialog">
@@ -136,7 +109,7 @@
      function deleteData(id)
      {
          var id = id;
-         var url = '{{route("insectos.destroy", ":id") }}';
+         var url = '{{route("admin.destroy", ":id") }}';
          url = url.replace(':id', id);
          $("#deleteForm").attr('action', url);
          $("#spn_nombre").text(id);

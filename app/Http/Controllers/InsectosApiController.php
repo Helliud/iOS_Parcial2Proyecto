@@ -67,7 +67,7 @@ class InsectosApiController extends Controller
 
             $archivoPortada = $request->file('foto');
             $rutaArchivo = $archivoPortada->store('public\assets\img\imgInsectos');
-            $rutaArchivo = substr($rutaArchivo, 16);
+            $rutaArchivo = substr($rutaArchivo, 30);
             $insecto->foto = $rutaArchivo;
 
         }
@@ -94,10 +94,28 @@ class InsectosApiController extends Controller
             $argumentos['insecto'] = $insecto;
             return view('insectos.show', $argumentos);
         }
-
-
-        
     }
+
+        /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $insecto = Insecto::find($id);
+
+        if($insecto){
+
+            $argumentos = array();
+            $argumentos['insecto'] = $insecto;
+            return view('insectos.edit', $argumentos);
+
+        } 
+        return redirect()->route('insectos.index')->with('error', 'No se encontro la noticia');
+    }
+
 
     /**
      * Update the specified resource in storage.
@@ -108,7 +126,26 @@ class InsectosApiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $insecto = Insecto::find($id);
+        if($insecto){
+            $insecto->id_user = $request->user()->id;
+            $insecto->nombre = $request->input('nombre');
+            $insecto->descripcion = $request->input('descripcion');
+            $insecto->temporada = $request->input('temporada');
+            $insecto->donado = $request->input('donado');
+            $insecto->capturado = $request->input('capturado');
+            $insecto->ubicacion = $request->input('ubicacion');
+            $insecto->foto = $request->input('foto');
+            $insecto->fecha_capturado = $request->input('fecha_capturado');
+            $insecto->estado = $request->input('estado');
+                
+            if($insecto->save()){
+                return redirect()->route('insectos.edit', $id)->with('exito', 'La noticia se actualizo exitosamente');
+
+            }
+            return redirect()->route('insectos.edit', $id)->with('error', 'No se pudo actualizar la noticia');
+        }
+        return redirect()->route('insectos.index')->with('error', 'No se encontro la noticia');
     }
 
     /**
@@ -119,6 +156,13 @@ class InsectosApiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $insecto = Insecto::find($id);
+        if($insecto){
+
+            if($insecto->delete()){
+                return redirect()->route('insectos.index')->with('exito', '¡Tarea eliminada exitosamente!');
+            }
+            return redirect()->route('insectos.index')->with('error', 'No se puedo eliminar la tarea');
+        }
+        return redirect()->route('insectos.index')->with('error', 'No se encontró la tarea');}
     }
-}

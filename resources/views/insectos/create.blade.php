@@ -20,6 +20,7 @@
                             @csrf
                                 <div class="form-group row"><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="Nombre del insecto" name="nombre"></div>
                                 <div class="form-group row"><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="Temporada de captura" name="temporada"></div>
+                                <div class="form-group row"><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="¿Ha sido capturado?" name="capturado"></div>
                                 <div class="form-group row"><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="¿Ha sido donado al museo?" name="donado"></div>
                                 <div class="form-group row"><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="Ubicación de la captura" name="ubicacion"></div>
                                 <div class="form-group row"><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="Fecha: aaaa-mm-dd" name="fecha_capturado"></div>

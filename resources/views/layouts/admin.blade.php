@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed">
     <link rel="stylesheet" href="/../../assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="/../../assets/css/untitled.css">
+    <link rel="stylesheet" href="/../../css/estilos.css">
     @yield('estilos')
 </head>
 
@@ -21,9 +22,8 @@
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('insectos.index')}}"><i class="fas fa-university"></i><span>MUSEO</span></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('insectos.create')}}"><i class="fab fa-dropbox"></i><span>Capturar</span></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="table.html"><i class="fas fa-table"></i><span>Table</span></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="login.html"><i class="far fa-user-circle"></i><span>Login</span></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="register.html"><i class="fas fa-user-circle"></i><span>Register</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('admin.index')}}"><i class="fas fa-table"></i><span>Tabla de usuario</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"><i class="far fa-user-circle"></i><span>Agregar usuario</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
@@ -54,6 +54,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="/assets/js/theme.js"></script>
 
+
+    
     <script>
               function doClickLinkLogout(e){
                 e.preventDefault();
@@ -63,6 +65,8 @@
                 $("#linkLogout").click(doClickLinkLogout);
               });
 
-            </script>
-@yield('scrpits')
+    </script>
+
+    
+@yield('scripts')
 </body>

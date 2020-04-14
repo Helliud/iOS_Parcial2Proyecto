@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Auth::routes();
+Auth::routes();
 
 Route::get('/', function () {
     return view('auth.login');
@@ -23,9 +23,11 @@ Route::get('/index', 'InsectosApiController@index')->name('insectos.index');
 Route::resource('/admin/insectos','InsectosApiController');
 
 
+Route::get('/admin/index', 'UsuariosController@index')->name('admin.index');
+Route::resource('/admin','UsuariosController');
+
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/dashboard', 'AdminController@dashboard')->name('admin.dashboard');
 Auth::routes(['register' => false]);
 
 
