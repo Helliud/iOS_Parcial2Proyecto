@@ -18,14 +18,43 @@
                             <div class="text-center"><label style="color: #000000;font-size: 35px;font-family: Roboto, sans-serif;filter: blur(0px) brightness(96%) contrast(87%) grayscale(0%) hue-rotate(0deg) invert(0%) saturate(74%) sepia(0%);font-weight: bold;"><strong>REGISTRA UN INSECTO</strong></label></div>
                             <form class="user" enctype="multipart/form-data" action="{{route('insectos.store')}}" method="POST">
                             @csrf
-                                <div class="form-group row"><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="Nombre del insecto" name="nombre"></div>
-                                <div class="form-group row"><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="Temporada de captura" name="temporada"></div>
-                                <div class="form-group row"><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="¿Ha sido capturado?" name="capturado"></div>
-                                <div class="form-group row"><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="¿Ha sido donado al museo?" name="donado"></div>
-                                <div class="form-group row"><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="Ubicación de la captura" name="ubicacion"></div>
-                                <div class="form-group row"><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="Fecha: aaaa-mm-dd" name="fecha_capturado"></div>
-                                <div class="form-group row"><input type="file" name="foto"></div>
-                                <div class="form-group row"><textarea class="form-control" name="descripcion"></textarea></div>
+                            <div class="form-group row"><label>Nombre</label><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="Nombre" name="nombre"></div>
+                                <div class="form-group row"><label>Temporada</label><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="Temporada" name="temporada"></div>
+                                
+                                <!--Capturado -->
+                                <div class="form-group row">
+                                <label>¿Ha sido capturado?</label>
+                                <select name="capturado" class="form-control" data-toggle="dropdown" aria-expanded="false">
+                                    <option value="Si" class="dropdown-item form-control" role="presentation">Si</option>
+                                    <option value="No" class="dropdown-item form-control" role="presentation">No</option>
+                                </select>                                     
+                                </div>  
+
+                                <!--Capturado -->
+                                <div class="form-group row">
+                                <label>¿Ha sido donado?</label>
+                                <select name="donado" class="form-control" data-toggle="dropdown" aria-expanded="false">
+                                    <option value="Si" class="dropdown-item form-control" role="presentation">Si</option>
+                                    <option value="No" class="dropdown-item form-control" role="presentation">No</option>
+                                </select>                                     
+                                </div>
+
+
+                                <div class="form-group row"><label>Ubicacion de captura</label><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="Ubicacion" name="ubicacion"></div>
+                                <div class="form-group row"><label>Fecha de la captura</label><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="Fecha de captura" name="fecha_capturado"></div>
+                                
+                                <!--Capturado -->
+                                <div class="form-group row">
+                                <label>Estado</label>
+                                <select name="estado" class="form-control" data-toggle="dropdown" aria-expanded="false">
+                                    <option value="Pendiente" class="dropdown-item form-control" role="presentation">Pendiente</option>
+                                    <option value="En proceso" class="dropdown-item form-control" role="presentation">En proceso</option>
+                                    <option value="Terminado" class="dropdown-item form-control" role="presentation">Terminado</option>
+                                </select>                                     
+                                </div>       
+
+                                <div class="form-group row"><label>Foto</label><input type="file" name="foto"></div>
+                                <div class="form-group row"><label>Descripcion</label><textarea class="form-control" name="descripcion" placeholder="Descripcion"></textarea></div>
                                 <div class="form-row">
                                     <div class="form-group"><a href="{{route('insectos.index')}}" class="btn btn-primary btn-block text-white btn-user" type="submit" style="background-color: rgb(48,99,230);font-style: normal;font-weight: bold;">Regresar al inicio</a></div>
                                     <div class="col"><button class="btn btn-primary btn-block text-white btn-user" type="submit" style="background-color: rgb(57,198,71);font-style: normal;font-weight: bold;">Registrar insecto</button></div>

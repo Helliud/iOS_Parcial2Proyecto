@@ -20,7 +20,7 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('insectos.index')}}"><i class="fas fa-university"></i><span>MUSEO</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('insectos.index')}}"><i class="fas fa-university"></i><span>Ver insectos</span></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('insectos.create')}}"><i class="fab fa-dropbox"></i><span>Capturar</span></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('admin.index')}}"><i class="fas fa-table"></i><span>Tabla de usuario</span></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('admin.create')}}"><i class="far fa-user-circle"></i><span>Agregar usuario</span></a></li>
@@ -37,9 +37,8 @@
                             <li class="nav-item dropdown no-arrow mx-1" role="presentation"></li>
                             <li class="nav-item dropdown no-arrow" role="presentation">
                                 <div class="nav-item dropdown show no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">{{Auth::user()->name}}</span><img class="border rounded-circle img-profile" src="/assets/img/avatars/avatar1.jpeg"></a>
-                                    <div
-                                        class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu"><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings</a>
-                                            <div class="dropdown-divider"></div><a class="dropdown-item" id="linkLogout" role="presentation" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a></div>         
+                                    <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu"><a class="dropdown-item" role="presentation" href="#">
+                                        <a class="dropdown-item" id="linkLogout" role="presentation" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a></div>         
                                               <form id="formLogout" action="{{ route('logout') }}" method="POST">
                                                 @csrf
                                             </form>

@@ -17,6 +17,20 @@
                         <p class="text-primary m-0 font-weight-bold">Tabla de insectos</p>
                     </div>
                     <div class="card-body">
+                        
+                <form>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="criterio" id="txtCriterio">
+                            </div>
+                            
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="submit">Buscar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
                         <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                             <table class="table dataTable my-0" id="dataTable">
                                 <thead>

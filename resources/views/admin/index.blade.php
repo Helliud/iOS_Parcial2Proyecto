@@ -17,6 +17,7 @@
                         <p class="text-primary m-0 font-weight-bold">Tabla de usuarios</p>
                     </div>
                     <div class="card-body">
+
                         <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                             <table class="table dataTable my-0" id="dataTable">
                                 <thead>

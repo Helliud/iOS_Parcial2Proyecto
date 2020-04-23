@@ -9,20 +9,35 @@ use Illuminate\Support\Facades\Storage;
 use App\Insecto;
 
 
-class InsectosApiController extends Controller
+class InsectosController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api');
+        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
-        $insectos = Insecto::all();
-        return $insectos;
+    public function index(Request $request) {
+
+        $criterio = $request->input('criterio');
+        $insectos = array();
+
+        if($criterio)
+        {
+            $insectos = Insecto::where('nombre','LIKE','%'.$criterio.'%')->get();
+        } 
+        else 
+        {
+            $insectos = Insecto::all();
+        }
+
+        $argumentos = array();
+        $argumentos['insectos'] = $insectos;
+
+        return view('insectos.index', $argumentos);
     }
 
     /**
@@ -67,13 +82,10 @@ class InsectosApiController extends Controller
 
         }
 
-        $argumentos = array();
-        $argumentos['exito'] = false;
-        if($insecto -> save()){
-            $argumentos['exito'] = true;
+        if ($insecto->save()) {
 
-        }    
-        return $argumentos;
+            return redirect()->route('insectos.index')->with('exito', '¡La tarea ha sido guardada con éxito!');
+        }
     }
 
     /**
@@ -93,6 +105,27 @@ class InsectosApiController extends Controller
             return view('insectos.show', $argumentos);
         }
     }
+
+        /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $insecto = Insecto::find($id);
+
+        if($insecto){
+
+            $argumentos = array();
+            $argumentos['insecto'] = $insecto;
+            return view('insectos.edit', $argumentos);
+
+        } 
+        return redirect()->route('insectos.index')->with('error', 'No se encontro la noticia');
+    }
+
 
     /**
      * Update the specified resource in storage.
@@ -123,16 +156,14 @@ class InsectosApiController extends Controller
                 $insecto->foto = $rutaArchivo;
     
             }
-
-            $argumentos = array();
-            $argumentos['exito'] = false;
-            if($insecto -> save()){
-                $argumentos['exito'] = true;
-    
-            }    
-            return $argumentos;    
                 
+            if($insecto->save()){
+                return redirect()->route('insectos.edit', $id)->with('exito', 'La noticia se actualizo exitosamente');
+
+            }
+            return redirect()->route('insectos.edit', $id)->with('error', 'No se pudo actualizar la noticia');
         }
+        return redirect()->route('insectos.index')->with('error', 'No se encontro la noticia');
     }
 
     /**
@@ -141,9 +172,15 @@ class InsectosApiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
     public function destroy($id)
     {
-        //
+        $insecto = Insecto::find($id);
+        if($insecto){
+
+            if($insecto->delete()){
+                return redirect()->route('insectos.index')->with('exito', '¡Tarea eliminada exitosamente!');
+            }
+            return redirect()->route('insectos.index')->with('error', 'No se puedo eliminar la tarea');
+        }
+        return redirect()->route('insectos.index')->with('error', 'No se encontró la tarea');}
     }
-}

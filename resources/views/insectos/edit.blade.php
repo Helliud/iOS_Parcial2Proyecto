@@ -15,21 +15,52 @@
                 <div class="row" style="opacity: 1;">
                     <div class="col-lg-7">
                         <div class="p-5">
-                            <div class="text-center"><label style="color: #000000;font-size: 35px;font-family: Roboto, sans-serif;filter: blur(0px) brightness(96%) contrast(87%) grayscale(0%) hue-rotate(0deg) invert(0%) saturate(74%) sepia(0%);font-weight: bold;"><strong>REGISTRA UN INSECTO</strong></label></div>
+                            <div class="text-center"><label style="color: #000000;font-size: 35px;font-family: Roboto, sans-serif;filter: blur(0px) brightness(96%) contrast(87%) grayscale(0%) hue-rotate(0deg) invert(0%) saturate(74%) sepia(0%);font-weight: bold;"><strong>EDITA UN INSECTO</strong></label></div>
                             <form class="user" enctype="multipart/form-data" action="{{route('insectos.update', $insecto->id)}}" method="POST">
                             @csrf
                             @method('PUT')
-                                <div class="form-group row"><label>Nombre</label><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="{{$insecto->nombre}}" name="nombre"></div>
-                                <div class="form-group row"><label>Temporada</label><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="{{$insecto->temporada}}" name="temporada"></div>
-                                <div class="form-group row"><label>¿Ha sido capturado?</label><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="{{$insecto->capturado}}" name="capturado"></div>
-                                <div class="form-group row"><label>¿Ha sido donado al museo?</label><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="{{$insecto->donado}}" name="donado"></div>
-                                <div class="form-group row"><label>Ubicacion de captura</label><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="{{$insecto->ubicacion}}" name="ubicacion"></div>
-                                <div class="form-group row"><label>Fecha de la captura</label><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="{{$insecto->fecha_capturado}}" name="fecha_capturado"></div>
+                                <div class="form-group row"><label>Nombre</label><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="{{$insecto->nombre}}" name="nombre" value="{{ $insecto -> nombre }}"></div>
+                                <div class="form-group row"><label>Temporada</label><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="{{$insecto->temporada}}" value="{{ $insecto -> temporada }}" name="temporada"></div>
+                                
+                                <!--Capturado -->
+                                <div class="form-group row">
+                                <label>¿Ha sido capturado?</label>
+                                <select name="capturado" class="form-control" data-toggle="dropdown" aria-expanded="false">
+                                    <option value="Si" class="dropdown-item form-control" role="presentation">Si</option>
+                                    <option value="No" class="dropdown-item form-control" role="presentation">No</option>
+                                </select>                                     
+                                </div>  
+
+                                <!--Capturado -->
+                                <div class="form-group row">
+                                <label>¿Ha sido donado?</label>
+                                <select name="donado" class="form-control" data-toggle="dropdown" aria-expanded="false">
+                                    <option value="Si" class="dropdown-item form-control" role="presentation">Si</option>
+                                    <option value="No" class="dropdown-item form-control" role="presentation">No</option>
+                                </select>                                     
+                                </div>
+
+
+                                <div class="form-group row"><label>Ubicacion de captura</label><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="{{$insecto->ubicacion}}" value="{{ $insecto -> ubicacion }}" name="ubicacion"></div>
+                                <div class="form-group row"><label>Fecha de la captura</label><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="{{$insecto->fecha_capturado}}" value="{{ $insecto -> fecha_capturado }}" name="fecha_capturado"></div>
+                                
+                                <!--Capturado -->
+                                <div class="form-group row">
+                                <label>Estado</label>
+                                <select name="estado" class="form-control" data-toggle="dropdown" aria-expanded="false">
+                                    <option value="{{ $insecto -> estado }}" class="dropdown-item" role="presentation">{{ $insecto -> estado }}</option>
+                                    <option value="Pendiente" class="dropdown-item form-control" role="presentation">Pendiente</option>
+                                    <option value="En proceso" class="dropdown-item form-control" role="presentation">En proceso</option>
+                                    <option value="Terminado" class="dropdown-item form-control" role="presentation">Terminado</option>
+                                </select>                                     
+                                </div>       
+
                                 <div class="form-group row"><label>Foto</label><input type="file" name="foto"></div>
-                                <div class="form-group row"><label>Descripcion</label><textarea class="form-control" name="descripcion" placeholder="{{$insecto->descripcion}}"></textarea></div>
+                                <div class="form-group row"><label>Descripcion</label><textarea class="form-control" name="descripcion" placeholder="{{$insecto->descripcion}}" value="{{ $insecto -> descripcion }}"></textarea></div>
+
                                 <div class="form-row">
                                     <div class="form-group"><a href="{{route('insectos.index')}}" class="btn btn-primary btn-block text-white btn-user" type="submit" style="background-color: rgb(48,99,230);font-style: normal;font-weight: bold;">Regresar al inicio</a></div>
-                                    <div class="col"><button class="btn btn-primary btn-block text-white btn-user" style="background-color: rgb(57,198,71);font-style: normal;font-weight: bold;">Registrar insecto</button></div>
+                                    <div class="col"><button class="btn btn-primary btn-block text-white btn-user" style="background-color: rgb(57,198,71);font-style: normal;font-weight: bold;">Editar insecto</button></div>
                                 </div>
                             </form>
                         </div>

@@ -19,8 +19,9 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/index', 'InsectosApiController@index')->name('insectos.index');
-Route::resource('/admin/insectos','InsectosApiController');
+
+Route::get('/index', 'InsectosController@index')->name('insectos.index');
+Route::resource('/admin/insectos','InsectosController');
 
 
 Route::get('/admin/index', 'UsuariosController@index')->name('admin.index');

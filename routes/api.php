@@ -18,5 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('insectos','InsectosApiController');
+Route::get('indexApi', 'InsectosApiController@index');
+Route::apiResource('insectosApi','InsectosApiController');
 

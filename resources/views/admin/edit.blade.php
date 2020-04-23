@@ -15,7 +15,7 @@
                 <div class="row" style="opacity: 1;">
                     <div class="col-lg-7">
                         <div class="p-5">
-                            <div class="text-center"><label style="color: #000000;font-size: 35px;font-family: Roboto, sans-serif;filter: blur(0px) brightness(96%) contrast(87%) grayscale(0%) hue-rotate(0deg) invert(0%) saturate(74%) sepia(0%);font-weight: bold;"><strong>REGISTRA UN USUARIO</strong></label></div>
+                            <div class="text-center"><label style="color: #000000;font-size: 35px;font-family: Roboto, sans-serif;filter: blur(0px) brightness(96%) contrast(87%) grayscale(0%) hue-rotate(0deg) invert(0%) saturate(74%) sepia(0%);font-weight: bold;"><strong>EDITA UN USUARIO</strong></label></div>
                             <form class="user" enctype="multipart/form-data" action="{{route('admin.update', $usuario->id)}}" method="POST">
                             @csrf
                             @method('PUT')
