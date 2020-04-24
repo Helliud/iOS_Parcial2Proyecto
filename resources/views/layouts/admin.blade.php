@@ -22,8 +22,12 @@
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('insectos.index')}}"><i class="fas fa-university"></i><span>Ver insectos</span></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('insectos.create')}}"><i class="fab fa-dropbox"></i><span>Capturar</span></a></li>
+                    
+                    @if(Auth::user()->id_tipo_usuario == 1)
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('admin.index')}}"><i class="fas fa-table"></i><span>Tabla de usuario</span></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('admin.create')}}"><i class="far fa-user-circle"></i><span>Agregar usuario</span></a></li>
+                    @endif
+
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>

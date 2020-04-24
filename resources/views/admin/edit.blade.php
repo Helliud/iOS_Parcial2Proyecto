@@ -22,7 +22,13 @@
                                 <div class="form-group row"><label>Nombre</label><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="{{$usuario->name}}" name="name" value="{{$usuario->name}}"></div>
                                 <div class="form-group row"><label>Email</label><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="{{$usuario->email}}" name="email" value="{{$usuario->email}}"></div>
                                 <div class="form-group row"><label>Contraseña</label><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="password" name="password"></div>
-                                <div class="form-group row"><label>Tipo de usuario</label><input class="form-control d-lg-flex justify-content-lg-center form-control-user" type="text"  placeholder="{{$usuario->tipo_usuario}}" name="tipo_usuario" value="{{$usuario->tipo_usuario}}"></div>
+                                <div class="form-group row"><label>Tipo de usuario</label>                                
+                                <select name="tipo_usuario" class="form-control" data-toggle="dropdown" aria-expanded="false">
+                                    <option value="{{ $usuario -> tipo_usuario }}" class="dropdown-item" role="presentation">{{ $usuario -> tipo_usuario }}</option>
+                                    <option value="Administrador" class="dropdown-item form-control" role="presentation">Administrador</option>
+                                    <option value="Consultor" class="dropdown-item form-control" role="presentation">Consultor</option>
+                                </select>                                     
+                                </div>
                                 <div class="form-row">
                                     <div class="form-group"><a href="{{route('admin.index')}}" class="btn btn-primary btn-block text-white btn-user" type="submit" style="background-color: rgb(48,99,230);font-style: normal;font-weight: bold;">Regresar al inicio</a></div>
                                     <div class="col"><button class="btn btn-primary btn-block text-white btn-user" style="background-color: rgb(57,198,71);font-style: normal;font-weight: bold;">Registrar usuario</button></div>

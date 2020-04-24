@@ -17,20 +17,68 @@
                         <p class="text-primary m-0 font-weight-bold">Tabla de insectos</p>
                     </div>
                     <div class="card-body">
-                        
-                <form>
-                    <div class="row">
+            <div class="row">
+            <form>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="criterio" id="txtCriterio">
+                                <label>Nombre</label>
+                                <input type="text" class="form-control" name="nombre" id="txtNombre">
                             </div>
                             
                             <div class="form-group">
                                 <button class="btn btn-primary" type="submit">Buscar</button>
                             </div>
                         </div>
-                    </div>
                 </form>
+            
+                <form>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Estado</label>
+                                    <select name="estado" class="form-control" data-toggle="dropdown" aria-expanded="false" id="slcEstado">
+                                            <option value="Pendiente" class="dropdown-item form-control" role="presentation">Pendiente</option>
+                                            <option value="En proceso" class="dropdown-item form-control" role="presentation">En proceso</option>
+                                            <option value="Terminado" class="dropdown-item form-control" role="presentation">Terminado</option>
+                                    </select>                                     
+                            </div>
+                            
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="submit">Buscar</button>
+                            </div>
+                        </div>
+                </form>
+
+                <form>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Fecha de captura</label>
+                                <input type="text" class="form-control" name="fecha_capturado" id="txtFecha">
+                            </div>
+                            
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="submit">Buscar</button>
+                            </div>
+                        </div>
+                </form>
+
+                <form>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Temporada</label>
+                                    <select name="temporada" class="form-control" data-toggle="dropdown" aria-expanded="false" id="slcEstado">
+                                        <option value="Primavera" class="dropdown-item form-control" role="presentation">Primavera</option>
+                                        <option value="Verano" class="dropdown-item form-control" role="presentation">Verano</option>
+                                        <option value="Otoño" class="dropdown-item form-control" role="presentation">Otoño</option>
+                                        <option value="Invierno" class="dropdown-item form-control" role="presentation">Invierno</option>
+                                    </select>                                     
+                            </div>
+                            
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="submit">Buscar</button>
+                            </div>
+                        </div>
+                </form>
+            </div>
                         <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                             <table class="table dataTable my-0" id="dataTable">
                                 <thead>

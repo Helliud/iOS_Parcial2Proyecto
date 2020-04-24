@@ -19,5 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('indexApi', 'InsectosApiController@index');
-Route::apiResource('insectosApi','InsectosApiController');
+Route::middleware('auth:api', 'apiCapturador') -> apiResource('insectosApi','InsectosApiController');
+
+Route::get('solocapturador', 'MensajesApiController@mensajeCapturador') -> name('api.solocapturadores');
 

@@ -20,8 +20,21 @@ class InsectosApiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
-        $insectos = Insecto::all();
+    public function index(Request $request) {
+        
+        $fechaInicio = $request->input('fechaInicio');
+        $fechaFin = $request->input('fechaFin');
+
+        if($fechaInicio && $fechaFin)
+        {
+            $insectos = Insecto::where('fecha_capturado','>=',$fechaInicio)->where('fecha_capturado','<=',$fechaFin)->get();
+
+        }
+
+        else
+        {
+            $insectos = Insecto::all();
+        }
         return $insectos;
     }
 

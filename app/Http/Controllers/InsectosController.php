@@ -21,14 +21,32 @@ class InsectosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request) {
+        $nombre = $request->input('nombre');
+        $estado = $request->input('estado');
+        $fechaCapturado = $request->input('fecha_capturado');
+        $temporada = $request->input('temporada');
 
-        $criterio = $request->input('criterio');
         $insectos = array();
 
-        if($criterio)
+        if($nombre)
         {
-            $insectos = Insecto::where('nombre','LIKE','%'.$criterio.'%')->get();
-        } 
+            $insectos = Insecto::where('nombre','LIKE','%'.$nombre.'%')->get();
+        }
+
+        else if($estado)
+        {
+            $insectos = Insecto::where('estado','LIKE','%'.$estado.'%')->get();
+        }
+
+        else if($fechaCapturado)
+        {
+            $insectos = Insecto::where('fecha_capturado','LIKE','%'.$fechaCapturado.'%')->get();
+        }
+
+        else if($temporada)
+        {
+            $insectos = Insecto::where('temporada','LIKE','%'.$temporada.'%')->get();
+        }
         else 
         {
             $insectos = Insecto::all();
