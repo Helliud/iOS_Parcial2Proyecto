@@ -114,6 +114,7 @@
                                             <i class="fas fa-eye"></i>
                                             </a>
 
+                                            @if(Auth::user()->id_tipo_usuario == 1)
                                             <!-- Edit -->
                                             <a href="{{route('insectos.edit',$insecto->id)}}" class="btn btn-primary">
                                                 <i class="fas fa-edit"></i>
@@ -122,6 +123,7 @@
                                             <!-- Delete -->
                                             <a href="javascript:;" data-toggle="modal" onclick="deleteData({{$insecto->id}})" 
                                             data-target="#DeleteModal" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Delete</a>                                        </form>
+                                            @endif
                                     </td>                                        
                                     </tr>
                                 @endforeach
